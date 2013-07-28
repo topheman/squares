@@ -1,0 +1,158 @@
+/*!
+ * TophemanSquares
+ * http://squares.topheman.com/
+ *
+ * Copyright 2012, Christophe Rosset (Topheman)
+ * http://blog.topheman.com/
+ * http://twitter.com/topheman
+ *
+ * game.css
+ */
+
+ body{
+     background-color: #EFEFEF;
+     font-family: Verdana,Geneva,Arial,Helvetica,sans-serif;
+     font-size:80%;
+     line-height:1.5em;
+     overflow-y: scroll;
+ }
+ a{
+     color:#900000;
+ }
+ h1.bandeau{
+     background-image: url(../js/ressources/topheman-squares-bandeau.png);
+     background-repeat: no-repeat;
+     background-position: center;
+     display: block;
+     height:200px;
+     text-indent: -9999px;
+ }
+ .bandeau-link{
+     position:absolute;
+     
+ }
+ .bandeau-link a{
+     margin:0px;
+     background: #900000;
+     color:white;
+     border:1px solid #900000;
+     text-decoration: none;
+     font-weight: bold;
+     font-style: italic;
+ }
+ .bandeau-link a:hover{
+     color:#900000;
+     background: white;     
+ }
+ .bandeau-link.left a{
+     padding:5px 10px 5px 5px;
+     -moz-border-radius: 0px 15px 15px 0px;
+     border-radius: 0px 15px 15px 0px;
+     -webkit-transition:    color .3s ease-in, background .3s ease-in, padding-left .3s ease-in;
+     -moz-transition:       color .3s ease-in, background .3s ease-in, padding-left .3s ease-in;
+     -o-transition:         color .3s ease-in, background .3s ease-in, padding-left .3s ease-in;
+     transition:            color .3s ease-in, background .3s ease-in, padding-left .3s ease-in;
+ }
+ .bandeau-link.left a:hover{
+     border-left:1px solid white;
+     padding-left:50px;  
+ }
+ .bandeau-link.right a{
+     padding:5px 5px 10px 5px;
+     -moz-border-radius: 15px 0px 0px 15px;
+     border-radius: 15px 0px 0px 15px;
+     -webkit-transition:    color .3s ease-in, background .3s ease-in, padding-right .3s ease-in;
+     -moz-transition:       color .3s ease-in, background .3s ease-in, padding-right .3s ease-in;
+     -o-transition:         color .3s ease-in, background .3s ease-in, padding-right .3s ease-in;
+     transition:            color .3s ease-in, background .3s ease-in, padding-right .3s ease-in;
+ }
+ .bandeau-link.right a:hover{
+     border-right:1px solid white;
+     padding-right:50px;  
+ }
+ #blog-post-link{
+     top:150px;
+     left:0px;
+ }
+ #tweet-this-link{
+     top:210px;
+     right:0px;
+ }
+ #twitter-link{
+     top:110px;
+     right:0px;
+ }
+ #mail-link{
+     top:160px;
+     right:0px;
+ }
+ #content{
+     margin-right:250px;
+ }
+ #navigation{
+     text-align: center;
+     display: block;
+ }
+ #navigation a.active{
+     font-weight: bold;
+ }
+ #content-explication{
+     padding: 0 5px;
+ }
+ footer p{
+     font-family: Arial,Helvetica,sans-serif;
+     text-align: center;
+     font-size: 10px;
+     clear:left;
+ }
+ #twitter-wrapper{
+     float:right;
+     width:250px;
+     height:400px;
+     background-color: white;
+ }
+ #content-explication{
+ }
+ #en{
+     display:none;
+ }
+ dl.explication{
+     margin-bottom: 40px;
+ }
+ dl.explication dt{
+     font-weight: bold;
+     margin-bottom: 5px;
+ }
+ dl.explication dd{
+     margin-bottom: 5px;
+ }
+ dl.explication dd ul{
+     margin: 0px;
+ }
+ dl.explication dd ul li{
+     margin-left: -20px;
+ }
+ .play-wrapper{
+     text-align: center;
+ }
+ a.play{
+     padding:10px 40px;
+     background-color: #900000;
+     color:white;
+     border:1px solid #900000;
+     text-decoration: none;
+     font-weight: bold;
+     font-size:20pt;
+     font-style: italic;
+ }
+ a.play:hover{
+     color:#900000;
+     background-color: white;
+ }
+ #screenshots{
+ }
+ #screenshots ul li{
+     float: left;
+     list-style: none;
+     margin: 0px 5px 5px 0px;
+ }

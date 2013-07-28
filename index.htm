@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" /> 
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="Author" content="Christophe Rosset" />
+        <title>Topheman Squares - HTML5/Javascript Game</title>
+        <!--[if lt IE 9]>
+        <script src="js/html5.js"></script>
+        <![endif]-->
+        <script type="text/javascript" src="js/jquery-1.7.1.js"></script>
+        <script type="text/javascript" src="js/jquery.browser.min.js"></script>
+        <script type="text/javascript" src="js/jqModal.js"></script>
+        <link rel="stylesheet" href="./css/intro.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="./css/jqModal.css" type="text/css" media="screen" />
+        <style>
+            /* temporary */
+            /*#blog-post-link{display:none;}*/
+            #twitter-wrapper{display:none;}
+            #content {margin-right: 0px;}
+        </style>
+        <script>
+        jQuery(function(){
+            //language fr/en management
+            jQuery('#navigation a').click(function(e){
+                var toShow = jQuery(this).attr('href');
+                var toHide = (toShow == '#fr' ? '#en' : '#fr');
+                if(!jQuery(toShow).is(':visible')){
+                    jQuery(toHide).slideUp('normal', function(){
+                        jQuery(toShow).slideDown();
+                    });
+                }
+                var linkIdToHighLight = '#show-'+toShow.replace('#','');
+                jQuery('#navigation a').removeClass('active');
+                jQuery(linkIdToHighLight).addClass('active');
+                e.preventDefault();
+                return false;
+            });
+            
+            //fallback if anchor #en was indexed by crawler
+            if(window.location.href.indexOf('#en') != -1){
+                jQuery('#fr').hide();
+                jQuery('#en').show();
+                jQuery('#show-fr').removeClass('active');
+                jQuery('#show-en').addClass('active');
+            }
+            
+            //init screenshots popups
+            jQuery('#screenshots-popup-window').jqm();
+            jQuery('#screenshots a').click(function(){
+                jQuery('#screenshots-popup-window img').attr('src', jQuery(this).attr('href'));
+                jQuery('#screenshots-popup-window').jqmShow();
+                jQuery('#screenshots-popup-window').css({'width':'650px','background':'transparent','border':'0px'});
+                return false;
+            })
+            
+            //init recette modal
+//            jQuery('#explication-recette').jqm();
+//            jQuery('#explication-recette').jqmShow();
+            
+            //mail report
+            jQuery('.mail-report').click(function(){
+                var address = 'tophe@topheman.com';
+                var subject = '[TophemanSquares]';
+                var body = 'Merci pour vos informations : '+$.os.name+' '+$.browser.name+' '+$.browser.version+' / LocalStorage : '+(window.localStorage ? "true" : "false");
+                window.location.href = 'mailto:'+address+'?subject='+subject+'&body='+body;
+                return false;
+            })
+        });
+        </script>
+        <!-- debut google analytics -->
+        <script type="text/javascript">
+
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-868601-4']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+
+        </script>
+        <!-- fin google analytics -->
+    </head>
+    <body class="intro">
+        <h1 class="bandeau">Topheman Squares</h1>
+        <div id="blog-post-link" class="bandeau-link left">
+            <a href="http://blog.topheman.com/2012/02/05/topheman-squares-html5-javascript-game/" title="Topheman Squares - Post sur blog.topheman.com">Lire le post sur le Blog Topheman</a>
+        </div>
+        <div id="tweet-this-link" class="bandeau-link right">
+            <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://squares.topheman.com" data-text="#HTML5 #Javascript game" data-via="topheman" data-lang="fr" data-size="large" data-count="none">Tweeter</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        </div>
+        <div id="mail-link" class="bandeau-link right">
+            <a href="mailto:tophe@topheman.com?subject=[TophemanSquares]" title="Report by mail" class="mail-report">Report by Mail</a>
+        </div>
+        <div id="twitter-link" class="bandeau-link right">
+            <a href="http://twitter.com/topheman" title="@topheman" target="_blank">Twitter : @topheman</a>
+        </div>
+        <div id="twitter-wrapper">
+            <span>Widget to come</span>
+        </div>
+        <div id="content">
+            <nav id="navigation">
+                <a href="#fr" title="Français" lang="fr-fr" id="show-fr" class="active">Français</a> - <a href="#en" title="English" lang="en-us" id="show-en">English</a>
+            </nav>
+            <div id="content-explication">
+                <article id="fr" lang="fr-fr">
+                    <dl class="explication">
+                        <dt>Qu'est ce que Topheman Squares ?</dt>
+                        <dd>Une adaptation - d'après les souvenirs que j'en ai - en HTML5/Javascript d'un jeu auquel je jouais dans les années 1990 sur notre IIvi (notre premier Mac couleur).</dd>
+                        <dt>Comment jouer à Topheman Squares ?</dt>
+                        <dd>
+                            <ul>
+                                <li>Pour passer au niveau supérieur, vous devez soit avoir recouvert 80% de la zone de jeu, soit avoir tué tous les ennemis.</li>
+                                <li>Pour pouvoir capturer un ennemi, vous devez attraper un des points oranges qui apparaissent périodiquement.</li>
+                                <li>Plus vous faites de grandes formes, plus vous gagnez de points.</li>
+                            </ul>
+                        </dd>
+                        <dt>Pourquoi choisir HTML5/Javascript comme technos ?</dt>
+                        <dd>J'aime beaucoup coder en Javascript et c'était l'occasion d'utiliser la feature canvas proposée par html5.</dd>
+                        <dt>Requis</dt>
+                        <dd>Tout ce dont vous avez besoin pour jouer est <strong>un navigateur récent</strong>.<br />
+                            Voici la liste des OS / navigateurs sur lesquels j'ai testé mon jeu (et qui marchent) :
+                            <ul>
+                                <li>Windows : Chrome 16, Firefox 3.6.25, Safari 5.1.2</li>
+                                <li>Mac : Firefox</li>
+                                <li>Linux :
+                                    <ul>
+                                        <li>Ubuntu 11.04 : Chrome 14, Rekonq 0.7.0, FireFox 4</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            Je compte sur vous pour me remonter les éventuels bugs ou incohérences, n'hésitez pas à me contacter par <a href="mailto:tophe@topheman.com?subject=[TophemanSquares]" class="mail-report">mail</a> ou à laisser un commentaire sur
+                            <a href="http://blog.topheman.com/2012/02/05/topheman-squares-html5-javascript-game/" title="Topheman Squares - Post sur blog.topheman.com">l'article que j'ai fait sur mon blog</a>.
+                        </dd>
+                    </dl>
+                    <p class="play-wrapper"><a href="game.htm" title="JOUER" class="play">JOUER A TOPHEMAN SQUARES !</a></p>
+                </article>
+                <article id="en" lang="en-us">
+                    <dl class="explication">
+                        <dt>What is Topheman Squares ?</dt>
+                        <dd>An adaptation in HTML5/Javascript - based on the memories I have, of a game I used to play in the 90s on our IIvi (our first color computer).</dd>
+                        <dt>How to play Topheman Squares ?</dt>
+                        <dd>
+                            <ul>
+                                <li>To get to the next level, you have to cover at least 80% of the game zone or kill every enemies.</li>
+                                <li>To kill an enemy, you have to get an orange dot that appears from time to time.</li>
+                                <li>The bigger shapes you draw, the higher score you get.</li>
+                            </ul>
+                        </dd>
+                        <dt>Why HTML5/Javascript ?</dt>
+                        <dd>I really enjoy coding in Javascript and that was the occasion of using the canvas feature of html5.</dd>
+                        <dt>Requirements</dt>
+                        <dd>All you need is <strong>a recent browser</strong>. Here's a list of the OS / browsers I've tested the game on :
+                            <ul>
+                                <li>Windows : Chrome 16, Firefox 3.6.25, Safari 5.1.2</li>
+                                <li>Mac : Firefox</li>
+                                <li>Linux :
+                                    <ul>
+                                        <li>Ubuntu 11.04 : Chrome 14, Rekonq 0.7.0, FireFox 4</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            Report any bug or inconsistencies to help improve the game. You can <a href="mailto:tophe@topheman.com?subject=[TophemanSquares]" class="mail-report">mail me</a> or leave a comment on <a href="http://blog.topheman.com/2012/02/05/topheman-squares-html5-javascript-game/" title="Topheman Squares - Post sur blog.topheman.com">this blog post</a>.
+                        </dd>
+                    </dl>
+                    <p class="play-wrapper"><a href="game.htm" title="PLAY" class="play">PLAY TOPHEMAN SQUARES !</a></p>
+                </article>
+            </div>
+        </div>
+        <div id="screenshots">
+            <p><strong>Screenshots</strong></p>
+            <ul>
+                <li><a href="img/welcome-screen.png" title="Screenshots" class="screenshots-popup-link"><img src="img/welcome-screen.png" width="200" height="200" /></a></li>
+                <li><a href="img/help-screen.png" title="Screenshots" class="screenshots-popup-link"><img src="img/help-screen.png" width="200" height="200" /></a></li>
+                <li><a href="img/playing1.png" title="Screenshots" class="screenshots-popup-link"><img src="img/playing1.png" width="200" height="200" /></a></li>
+                <li><a href="img/playing2.png" title="Screenshots" class="screenshots-popup-link"><img src="img/playing2.png" width="200" height="200" /></a></li>
+                <li><a href="img/playing3.png" title="Screenshots" class="screenshots-popup-link"><img src="img/playing3.png" width="200" height="200" /></a></li>
+                <li><a href="img/playing4.png" title="Screenshots" class="screenshots-popup-link"><img src="img/playing4.png" width="200" height="200" /></a></li>
+                <li><a href="img/playing5.png" title="Screenshots" class="screenshots-popup-link"><img src="img/playing5.png" width="200" height="200" /></a></li>
+                <li><a href="img/playing6.png" title="Screenshots" class="screenshots-popup-link"><img src="img/playing6.png" width="200" height="200" /></a></li>
+            </ul>
+        </div>
+        <div id="screenshots-popup-window" class="jqmWindow">
+            <a href="#" class="jqmClose" title="Close">×</a>
+            <img src="/img/welcome-screen.png" />
+        </div>
+        <!--<div id="explication-recette" class="jqmWindow">
+            <a href="#" class="jqmClose" title="Close">×</a>
+            <p>Bienvenue sur la version de test de <strong>Topheman Squares</strong>.</p>
+            <p>Si vous êtes ici, c'est que vous avez reçu un mail de ma part vous proposant de tester en avant-première ce jeu que j'ai développé.</p>
+            <p>Je vous remercie d'avance de vos remarques (n'hésitez pas à <a href="mailto:tophe@topheman.com?subject=[TophemanSquares]" class="mail-report">m'envoyer un mail</a>).</p>
+            <p>S'il vous plaît, <strong>veuillez ne pas diffuser cette adresse avant l'ouverture officielle du site</strong> (que je puisse faire quelques ajustements en fonction de vos retours).</p>
+            <p>&nbsp;</p>
+            <p>Tophe</p>
+            <p>PS : Ce jeu sera ouvert à tout le monde et totalement gratuit.</p>
+        </div>-->
+        <footer>
+            <p>© 2012 <a href="http://squares.topheman.com" title="Topheman Squares">squares.topheman.com</a> - Christophe Rosset</p>
+        </footer>
+    </body>
+</html>
