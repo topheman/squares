@@ -1,6 +1,8 @@
 TOPHEMAN SQUARES
 ================
 
+Test it at : http://squares.topheman.com/
+
 ##Intro##
 This is a game I made in 2011, the repository was previously on googlecode : https://code.google.com/p/topheman-squares/
 
